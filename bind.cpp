@@ -31,4 +31,17 @@ int main()
   //f(x) = 2 * x
   auto yaf2x = std::bind(std::multiplies< int >{}, 2, _1);
   std::cout << yaf2x(20) << "\n";
+  //g0(x, y) = x^2 + y * x
+  auto square = std::bind(std::multiplies< int >{}, _1, _1);
+  auto g0 = std::bind(std::plus< int >{},
+    square,
+    std::bind(std::multiplies< int >{}, _1, _2)
+    );
+  std::cout << g0(2, 3) << "\n";
+  //g1(x, y) = x^2 + y * x + y^2
+  auto g1 = std::bind(std::plus< int >{},
+    g0,
+    std::bind(square, _2)
+  );
+  std::cout << g1(2, 3) << "\n";
 }
