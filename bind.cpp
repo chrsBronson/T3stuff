@@ -13,6 +13,13 @@ namespace goth
       return plus(a, b);
     }
   };
+  //структура с каким-то методом
+  struct A {
+    //foo(A &, int)
+    void foo(int a) {
+      std::cout << "call foo with " << a << "\n";
+    }
+  };
 }
 int main()
 {
@@ -44,4 +51,9 @@ int main()
     std::bind(square, _2)
   );
   std::cout << g1(2, 3) << "\n";
+  //bind to method
+  goth::A a;
+  auto bindToMethod = std::bind(&goth::A::foo, std::ref(a), _1);
+  bindToMethod(100);
+  std::cout << "\n";
 }
