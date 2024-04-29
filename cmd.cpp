@@ -1,20 +1,27 @@
 #include <iostream>
+namespace goth
+{
+  void cmd1(std::istream &, std::ostream & out)
+  {
+    out << "CMD1 dispatched\n";
+  }
+  void cmd2(std::istream &, std::ostream & out)
+  {
+    out << "CMD2 dispatched\n";
+  }
+}
 int main()
 {
   std::string cmd;
-  //contextCMD1
-  //contextCMD2
   while (std::cin >> cmd)
   {
     if (cmd == "CMD1")
       {
-        //input paramsCMD1
-        //do smth with contextCMD1 and paramsCMD1
+        goth::cmd1(std::cin, std::cout);
       }
     else if (cmd == "CMD2")
       {
-        //input paramsCMD2
-        //do smth with contextCMD2 and paramsCMD2
+        goth::cmd2(std::cin, std::cout);
       }
     else
       {
