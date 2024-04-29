@@ -25,4 +25,10 @@ int main()
   //auto plus5 = std::bind(goth::plus, 5, _1);
   std::function < int(int) > plus5 = std::bind(goth::plus, 5, _1);
   std::cout << plus5(15) << "\n";
+  //f(x) = x + x
+  auto f2x = std::bind(std::plus< int >{}, _1, _1);
+  std::cout << f2x(3) << "\n";
+  //f(x) = 2 * x
+  auto yaf2x = std::bind(std::multiplies< int >{}, 2, _1);
+  std::cout << yaf2x(20) << "\n";
 }
